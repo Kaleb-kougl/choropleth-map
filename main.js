@@ -68,15 +68,29 @@ function d3Commands() {
     return educationDataset[i].fips;
   })
   .attr('data-education', (d, i) => {
-    return educationDataset[i].bachelorsOrHigher;
+    var result = educationDataset.filter(function( obj ) {
+      return obj.fips == d.id;
+    });
+    return result[0].bachelorsOrHigher;
   })
   .attr('data-areaname', (d, i) => {
-    return educationDataset[i].area_name;
+    var result = educationDataset.filter(function( obj ) {
+      return obj.fips == d.id;
+    });
+    return result[0].area_name;
   })
   .attr('data-state', (d, i) => {
-    return educationDataset[i].state;
+    var result = educationDataset.filter(function( obj ) {
+      return obj.fips == d.id;
+    });
+    return result[0].state;
   })
-  .attr('fill', (d, i) => determineColor(educationDataset[i].bachelorsOrHigher))
+  .attr('fill', (d, i) => {
+    var result = educationDataset.filter(function( obj ) {
+      return obj.fips == d.id;
+    });
+    return determineColor(result[0].bachelorsOrHigher)
+  })
   .attr('d', path)
   .attr('stroke-width', 0.3)
   .attr('stroke', 'gray')
@@ -130,10 +144,10 @@ function d3Commands() {
     .selectAll('g')
     .data([
        0,
-       13,
-       26,
-       39,
-       43,
+       13.1,
+       26.1,
+       39.1,
+       52.1,
     ])
     .enter().append('g');
 
@@ -173,15 +187,15 @@ function d3Commands() {
 }
 
 function determineColor(data) {
-  if (data <= 0) {
+  if (data >= 0 && data <= 13) {
     return 'rgb(237, 248, 251)';
-  } else if (data <= 13 && data > 0){
-    return 'rgb(180, 205, 226)';
   } else if (data <= 26 && data > 13){
-    return 'rgb(141, 151, 196)';
+    return 'rgb(180, 205, 226)';
   } else if (data <= 39 && data > 26){
+    return 'rgb(141, 151, 196)';
+  } else if (data <= 52 && data > 39){
     return 'rgb(135, 89, 165)';
-  } else if (data > 39){
+  } else if (data > 52){
     return 'rgb(128, 24, 123)';
   } else {
     return 'rgb(255, 0, 0)';
