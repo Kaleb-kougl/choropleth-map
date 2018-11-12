@@ -2,8 +2,10 @@
   fill: none; 
 }
 
-.counties {
-  /* fill: orange;  */
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #a9a9a9;
 }
 
 div.tooltip {
@@ -17,4 +19,5 @@ div.tooltip {
   border: 0px;
   border-radius: 8px;
   pointer-events: none;
+  opacity: 0;
 }
