@@ -71,6 +71,7 @@ function d3Commands() {
   .selectAll('path')
   .data(counties)
   .enter().append('path')
+  .attr('class', 'county')
   .attr('data-fips', (d, i) => {
     // console.log(educationDataset[i].fips);
     return educationDataset[i].fips;
@@ -80,11 +81,10 @@ function d3Commands() {
     // console.log(educationDataset)
     return educationDataset[i].bachelorsOrHigher;
   })
-  .attr('class', 'counties')
+  .attr('fill', (d, i) => determineColor(educationDataset[i].bachelorsOrHigher))
   .attr('d', path)
   .attr('stroke-width', 0.3)
   .attr('stroke', 'gray')
-  .attr('fill', (d, i) => determineColor(educationDataset[i].bachelorsOrHigher))
   .on('mouseover', function(d, i) {
       tooltip.transition()
         .duration(0)
