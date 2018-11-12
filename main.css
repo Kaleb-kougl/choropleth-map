@@ -1,0 +1,20 @@
+ .state {
+  fill: none; 
+}
+
+.counties {
+  /* fill: orange;  */
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  font: 12px sans-serif;
+  background: lightgreen;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
