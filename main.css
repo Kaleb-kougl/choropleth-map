@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     background-color: #a9a9a9;
+    min-width: 950px;
 }
 
 div.tooltip {
